@@ -28,6 +28,9 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         records: {
             type: new GraphQLList(AirTableRecord),
+            args: {
+                base_name: {type: GraphQLString}
+            },
             resolve: (parent, args) => {
 
                 let promise = new Promise((resolve, reject) => {
@@ -39,11 +42,7 @@ const RootQuery = new GraphQLObjectType({
                             reject(err);
                             return;
                         }
-
                         let res = records.map(record => record.fields);
-                        console.log('just right before shooting resolve function - > ');
-                        console.log('firstPage res - > ', res);
-
                         resolve(res)
                     });
                 });

@@ -11,8 +11,9 @@ app.use(
     graphqlHTTP({
         schema,
         graphiql: true,
-    }),
+    })
 );
+
 
 
 const PORT = process.env.PORT || 5000;
