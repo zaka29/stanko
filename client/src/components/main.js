@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Box, Heading, Flex, Text } from 'rebass'
+import { Box, Flex } from 'rebass';
+import Header from './Header';
+import Section from './Section';
+import Footer from './Footer';
 
 // Move to separate folder
 
@@ -8,11 +11,7 @@ const mainBoxStyles = {
     minHeight: '100vh',
     mx: 'auto',
     bg: '#2A315A',
-};
-
-const footerStyles = {
-    minHeight: 85,
-    p: 10,
+    fontFamily: 'Arimo, sans-serif'
 };
 
 class Stanko extends Component {
@@ -33,21 +32,7 @@ class Stanko extends Component {
                     flexDirection="column"
                     flex='1 1 auto'
                 >
-
-                    <Heading
-                        p={15}
-                        height={128}
-                    >
-                        <Text
-                            fontFamily='Varela Round, monospace'
-                            fontSize={[ 4, 5, 6 ]}
-                            lineHeight='body'
-                            textAlign='center'
-                            color='#F78A73'
-                        >
-                            stanislav zaichenko
-                        </Text>
-                    </Heading>
+                    <Header />
 
                     <Flex flex='1 1 auto'>
                         <Box
@@ -55,35 +40,28 @@ class Stanko extends Component {
                             width={1/2}
                             color='white'
                             bg='#F78A73'>
-                            Flex
+
+                            <Section side='left'/>
+
                         </Box>
                         <Box
                             p={3}
                             width={1/2}
                             color='white'
                             bg='#FEE5A0'>
-                            Box
+
+                            <Section side='right' />
+
                         </Box>
                     </Flex>
 
-                    <Box sx={footerStyles}>
-                        <Text>
-                            stanko contacts
-                        </Text>
-                    </Box>
+                    <Footer />
 
                 </Flex>
             </Flex>
         );
     }
 }
-
-
-
-
-
-
-
 
 export default Stanko
 
