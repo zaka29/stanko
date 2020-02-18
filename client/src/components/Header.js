@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text } from 'rebass'
 
-const Header = ({ header }) => (
+const Header = ({ name, position }) => (
     <Box
         px={15}
         py={35}
@@ -14,14 +14,14 @@ const Header = ({ header }) => (
             color='#F78A73'
             marginBottom={10}
         >
-            stanislav zaichenko
+            {name}
         </Text>
         <Text
             textAlign='center'
             fontSize={[ 1, 2 ]}
             color='#DAC493'
         >
-            FRONT END DEVELOPER
+            {position}
         </Text>
     </Box>
 );
