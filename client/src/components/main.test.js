@@ -11,6 +11,7 @@ it('renders without crashing', () => {
 });
 
 describe('Header display name and position title', () => {
+
     it('Heading should display name', () => {
         // pass in with props
         const { getByText } = render(<Header name="stanislav zaichenko" />);

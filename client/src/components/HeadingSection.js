@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box, Heading, Text } from 'rebass'
-
+import React, { Component } from 'react';
+import { Box, Heading, Text} from 'rebass'
 
 const headingStyles = (side) => {
     return {
@@ -8,13 +7,13 @@ const headingStyles = (side) => {
         fontFamily: 'Tauri, sans-serif',
         fontSize: [ 1, 2, 3 ],
         color: side === 'left' ? '#FEE5A0' : '#F78A73',
-        mb: 10,
+        mb: 20,
         p: 10,
         bg: '#2A315A',
     }
 };
 
-const Section = ({ section, side }) => (
+const HeadingSection = ({side}) => (
     <Box
         px={15}
         py={15}
@@ -33,4 +32,4 @@ const Section = ({ section, side }) => (
     </Box>
 );
 
-export default Section;
+export default HeadingSection;

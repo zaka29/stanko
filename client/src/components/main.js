@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Flex } from 'rebass';
 import Header from './Header';
-import Section from './Section';
+import SectionContainer from './SectionContainer';
 import Footer from './Footer';
 
 // Move to separate folder
@@ -13,6 +13,8 @@ const mainBoxStyles = {
     bg: '#2A315A',
     fontFamily: 'Arimo, sans-serif'
 };
+
+// TODO: GET an actual name and position from air table
 
 class Stanko extends Component {
     state = {
@@ -32,7 +34,10 @@ class Stanko extends Component {
                     flexDirection="column"
                     flex='1 1 auto'
                 >
-                    <Header />
+                    <Header
+                        name="stanislav zaichenko"
+                        position="FRONT END DEVELOPER"
+                    />
 
                     <Flex flex='1 1 auto'>
                         <Box
@@ -40,18 +45,14 @@ class Stanko extends Component {
                             width={1/2}
                             color='white'
                             bg='#F78A73'>
-
-                            <Section side='left'/>
-
+                            <SectionContainer side='left'/>
                         </Box>
                         <Box
                             p={3}
                             width={1/2}
                             color='white'
                             bg='#FEE5A0'>
-
-                            <Section side='right' />
-
+                            <SectionContainer side='right' />
                         </Box>
                     </Flex>
 
