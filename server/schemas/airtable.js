@@ -14,8 +14,8 @@ Airtable.configure({
 
 const base = Airtable.base('appzttEADM3ovtjXB');
 
-const AirTableRecord = new GraphQLObjectType({
-    name: 'AirTable',
+const experience = new GraphQLObjectType({
+    name: 'AirTableExperience',
     fields: () => ({
         title: {type: GraphQLString},
         slug: {type: GraphQLString},
@@ -23,11 +23,19 @@ const AirTableRecord = new GraphQLObjectType({
     })
 });
 
+const header = new GraphQLObjectType({
+    name: 'AirTableHeader',
+    fields: () => ({
+        name: {type: GraphQLString},
+        position: {type: GraphQLString},
+    })
+});
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        records: {
-            type: new GraphQLList(AirTableRecord),
+        experienceRecords: {
+            type: new GraphQLList(experience),
             args: {
                 base_name: {type: GraphQLString}
             },
@@ -50,8 +58,28 @@ const RootQuery = new GraphQLObjectType({
                 return promise.then(res => res)
 
             }
-        }
+        },
+        headerRecords: {
+            type: new GraphQLList(header),
+            resolve: (parent, args) => {
 
+                let promise = new Promise((resolve, reject) => {
+                    base('header').select({
+                        view: 'all-posts',
+                        fields:  ['name', 'position']
+                    }).firstPage(function(err, records) {
+                        if (err) {
+                            reject(err);
+                            return;
+                        }
+                        let res = records.map(record => record.fields);
+                        resolve(res)
+                    });
+                });
+
+                return promise.then(res => res)
+            }
+        }
     }
 });
 

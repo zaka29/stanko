@@ -5,6 +5,10 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schemas/airtable');
 const app = express();
+const cors = require('cors');
+
+// Allow cross-origin requests
+app.use(cors());
 
 app.use(
     '/graphql',
